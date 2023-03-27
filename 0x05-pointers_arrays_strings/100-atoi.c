@@ -24,6 +24,5 @@ else
 break;
 }
 }
-return (res * signal);
+return (res *signal);
 }
-
