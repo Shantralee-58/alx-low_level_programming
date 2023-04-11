@@ -20,4 +20,4 @@ char *create_array(unsigned int size, char c)
 	for (x = 0; x < size; x++)
 	cr[x] = c;
 	return (cr);
-}	
+}
