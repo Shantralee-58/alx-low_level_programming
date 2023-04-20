@@ -2,26 +2,27 @@
 #include <stdio.h>
 #include <stdarg.h>
 /**
- * print_numbers - prints numbers & new line at the end
- * @separator: string
- * @n: number of elements
- * Return: void
+ * print_strings - prints numbers using separator
+ * @separator: The string separator
+ * @n: The quantity of numbers
+ * @...: The list of numbers
+ * Return: Nothing
  */
-void print_numbers(const char *separator, const unsigned int n, ...)
+void print_strings(const char *separator, const unsigned int n, ...)
 {
-va_list ap;
-unsigned int x;
+va_list valist;
+unsigned int i;
+char *p;
 
-va_start(ap, n);
+va_start(valist, n);
 
-for (x = 0; x < n; x++)
+for (i = 0; i < n; i++)
 {
-printf("%d", va_arg(ap, int));
-if (separator != NULL && x != (n - 1))
-{
+if (separator != NULL && i != 0)
 printf("%s", separator);
+p = va_arg(valist, char *);
+printf("%s", (p == NULL) ? "(nil)" : p);
 }
-}
-putchar('\n');
-va_end(ap);
+printf("\n");
+va_end(valist);
 }
