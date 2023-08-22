@@ -1,5 +1,5 @@
 #!/bin/bash
-cd .
+cd /alx-low_level_programming/0x18-dynamic_libraries
 sleep 98
 mv gm /tmp/original_gm
 echo -e '#!/bin/bash\n\necho "--> Please make me win!"' > gm
