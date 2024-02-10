@@ -1,44 +1,39 @@
-/*
- * File: 1-binary.c
- * Auth: Imrane Achaari
- */
-
 #include "search_algos.h"
 
 /**
-  * binary_search - Searches for the value in a sorted array
-  *                 of integers using binary search.
-  * @array: Pointer to the first element of the array to search.
-  * @size: Number of the elements in the array.
-  * @value: Value to search for.
-  *
-  * Return: If the value is not present or the array is NULL, -1.
-  *         Otherwise, the index where the value is located.
-  *
-  * Description: Prints the [sub]array being searched after each change.
-  */
-int binary_search(int *array, size_t size, int value)
+ * jump_search - Searches for a value in a sorted array of integers
+ *               using the Jump search algorithm.
+ * @array: Pointer to the first element of the array to search.
+ * @size: Number of elements in the array.
+ * @value: Value to search for.
+ *
+ * Return: If the value is not present or the array is NULL, -1.
+ *         Otherwise, the first index where the value is located.
+ */
+int jump_search(int *array, size_t size, int value)
 {
-	size_t ii, left, right;
+    size_t step = 0, prev = 0, i = 0;
 
-	if (array == NULL)
-		return (-1);
+    if (!array)
+        return (-1);
 
-	for (left = 0, right = size - 1; right >= left;)
-	{
-		printf("Searching in array: ");
-		for (ii = left; ii < right; ii++)
-			printf("%d, ", array[ii]);
-		printf("%d\n", array[ii]);
+    step = sqrt(size);
+    while (array[prev] < value && prev < size)
+    {
+        printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
+        prev = step;
+        step += sqrt(size);
+        if (prev >= size)
+            break;
+    }
 
-		ii = left + (right - left) / 2;
-		if (array[ii] == value)
-			return (ii);
-		if (array[ii] > value)
-			right = ii - 1;
-		else
-			left = ii + 1;
-	}
+    printf("Value found between indexes [%lu] and [%lu]\n", prev - step, prev);
+    for (i = prev - step; i <= prev && i < size; i++)
+    {
+        printf("Value checked array[%lu] = [%d]\n", i, array[i]);
+        if (array[i] == value)
+            return (i);
+    }
 
-	return (-1);
+    return (-1);
 }
