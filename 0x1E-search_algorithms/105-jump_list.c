@@ -1,6 +1,6 @@
 /*
  * File: 105-jump_list.c
- * Auth: Imrane Achaari
+ * Auth: Idah Khumalo
  */
 
 #include "search_algos.h"
