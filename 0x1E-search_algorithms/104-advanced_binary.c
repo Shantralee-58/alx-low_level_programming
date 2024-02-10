@@ -1,6 +1,6 @@
 /*
  * File: 104-advanced_binary.c
- * Auth: Imrane Achaari
+ * Auth: Idah khumalo
  */
 
 #include "search_algos.h"
